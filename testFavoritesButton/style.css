@@ -1,0 +1,15 @@
+.star {
+  font-size: 40px;
+  color: gold;
+}
+p {
+  width: 300px;
+  font-size: 20px;
+}
+button {
+  background-color: transparent;
+  border: none;
+}
+button:focus {
+  outline: none;
+}
