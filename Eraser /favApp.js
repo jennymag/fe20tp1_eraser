@@ -69,12 +69,12 @@ const notes = [
   {
     title: "My first note",
     text: "Bla bla bla",
-    is_favorite: false,
+    is_favorite: true,
   },
   {
     title: "My second note",
     text: "Bla bla bla",
-    is_favorite: false,
+    is_favorite: true,
   },
 ];
 
