@@ -1,0 +1,33 @@
+/* Note System CSS */
+.noteSystemButton {
+  border-width: 4px;
+  width: 300px;
+  height: 120px;
+  padding: 10px;
+}
+
+.textField {
+  width: 500px;
+  height: 500px;
+}
+
+.selectNote {
+  width: 300px;
+  height: 120px;
+  padding: 10px;
+  border-width: 4px;
+  display: flex;
+  flex: auto;
+  flex-direction: row;
+}
+
+.mainSystemDiv > button {
+  padding: 3.5em;
+  justify-content: center;
+}
+
+/* End of Note System CSS */
+.mainSystemDiv {
+  display: flex;
+  flex-direction: column;
+}
