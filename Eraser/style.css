@@ -1,0 +1,67 @@
+button {
+  border-width: 4px;
+  width: 300px;
+  height: 120px;
+  background-color: transparent;
+}
+
+.textField {
+  width: 500px;
+  height: 500px;
+}
+
+.selectNote {
+  display: flex;
+  flex: auto;
+  flex-direction: row;
+  padding: 0px;
+  align-items: center;
+  justify-content: center;
+}
+
+.mainSystemDiv > button {
+  padding: 3.5em;
+  justify-content: center;
+}
+
+.noteButtonClass {
+  display: inline-block;
+  float: left;
+  overflow: auto;
+}
+
+.buttonConnect.noteButtonClass {
+  display: flex;
+}
+
+.noteTextContainer {
+  float: left;
+  width: 80%;
+}
+
+body,
+html {
+  margin: 0;
+}
+
+button.selectNote {
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
+  margin-left: -100%;
+}
+
+.noteButtonDiv {
+  display: flex;
+}
+
+.divForTextClass {
+  width: 100%;
+  margin: 1%;
+}
+/* jennys adds */
+.noteContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 10%;
+}
