@@ -105,7 +105,7 @@ nav.nav {
 
 .content h1 {
   color: var(--dark);
-  font-size: 4.2rem;
+  font-size: 5rem;
   font-weight: 400;
   margin-bottom: 1rem;
 }
@@ -114,6 +114,19 @@ nav.nav {
   color: var(--grey);
   letter-spacing: 1px;
   margin-bottom: 3rem;
+}
+
+.content2 h1 {
+  color: var(--dark);
+  font-size: 3rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.content2 p {
+  color: var(--grey);
+  letter-spacing: 1px;
+  margin-bottom: 3rem;  
 }
 
 .hero .hero__btn {
