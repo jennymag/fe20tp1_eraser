@@ -188,10 +188,6 @@ nav.nav {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url("images/mobpic.png");
   height: 100vh;
-  /*-webkit-background-size:cover;*/
-  /*-moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;*/
   background-repeat: no-repeat;
   background-position: center center;
   background-position: cover;
@@ -199,9 +195,6 @@ nav.nav {
 }
 .welcome-text {
   position: absolute;
-  /*width: 600px;
-    height: 300px;
-    margin: 20% 30%;*/
   width: 1200px;
   margin: 0 auto;
   text-align: center;
@@ -236,12 +229,8 @@ nav.nav {
 .container1 {
   display: flex;
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("images/mobpic.png");
+    url("images/pic2.png");
   height: 100vh;
-  /*-webkit-background-size:cover;*/
-  /*-moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;*/
   background-repeat: no-repeat;
   background-position: center center;
   background-position: cover;
@@ -249,29 +238,43 @@ nav.nav {
 }
 .welcome-text {
   position: absolute;
-  /*width: 600px;
-    height: 300px;
-    margin: 20% 30%;*/
   width: 1200px;
-  margin: 0 auto;
+  margin: auto;
   text-align: center;
 }
 .welcome-text h1 {
   text-align: center;
-  color: rgb(15, 15, 15);
+  margin: 200px;
+  color: rgb(247, 241, 241);
   text-transform: uppercase;
   font-size: 60px;
+  justify-content: center;
+  align-items: center;
+  
 }
 .welcome-text a {
-  border: 1px solid rgb(10, 10, 10);
-  padding: 10px 25px;
-  text-decoration: none;
+  padding: 1.6rem 3rem;
+  width: 15rem;
+  max-width: 40%;
   text-transform: uppercase;
-  font-size: 14px;
-  margin-top: 50px;
-  display: inline-block;
-  color: rgb(12, 12, 12);
+  border: 1px solid var(--primary);
+  border-radius: 1rem;
+  justify-content: center;
+  align-items: center;
+  
+ 
+  
+ 
 }
+.welcome-text button {
+  padding: 1.6rem 3rem;
+  width: 15rem;
+  max-width: 40%;
+  text-transform: uppercase;
+  border: 1px solid var(--primary);
+  border-radius: 1rem;
+}
+
 .welcome-text a :hover {
   background: rgb(230, 27, 27);
   color: #333;
