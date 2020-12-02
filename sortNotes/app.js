@@ -8,14 +8,6 @@ function toggleStar(event) {
       clicked_note = note;
       break;
     }
-
-    //fixa id från title
-    //https://freshman.tech/todo-list/
-    //const todo = {
-    //  text: quill.getContents(),
-    // checked: false,
-    //id: Date.now(),
-    //};
   }
 
   if (clicked_note.is_favorite) {
@@ -63,7 +55,6 @@ function render() {
   $favs.innerHTML = "";
 
   //loop all notes,( för varje note i notes )
-  //separera dom och array i  funktion
   for (const note of notes) {
     $notes.appendChild(createNote(note));
   }
@@ -79,7 +70,7 @@ const notes = [
     title: "My first note",
     text: "Bla bla bla",
     is_favorite: false,
-  }, //kolla freshman add to do, single sort of truth
+  },
   {
     title: "My second note",
     text: "Bla bla bla",

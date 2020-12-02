@@ -3,7 +3,9 @@ localStorage.setItem("myCurrentNote", zero);
 
 function createNote() {
   /* NOTE CALCULATION */
-  var currentNote = +localStorage.getItem("myCurrentNote");
+  //för att kunna spara array = JsonParse / JsonStringify
+  //kolla youtu.be/2poAs4dlvQQ
+  https: var currentNote = +localStorage.getItem("myCurrentNote"); //+?
   var newNote = 1;
   var sumNote = currentNote + newNote;
   localStorage.setItem("myCurrentNote", sumNote);
