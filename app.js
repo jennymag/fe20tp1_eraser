@@ -382,11 +382,11 @@ function visible(clicked_id) {
 /* favorite page */
 function toggleStar(event) {
   const btn = event.target; //save clicked button
-  const id = btn.getAttribute("data-id"); // save the id of button
+  const data_id = btn.getAttribute("data-id"); // save the id of button
 
   let clicked_note;
   for (const note of notes) {
-    if (note.title === id) {
+    if (note.id === data_id) {
       clicked_note = note;
       break;
     }
@@ -401,12 +401,14 @@ function toggleStar(event) {
   render();
 }
 
-function createTheNote({ title, text, is_favorite }) {
+function createTheNote({ title, text, is_favorite, id }) {
   const el = document.createElement("div");
   el.className = "note";
 
+  /* here i changed things */
+
   const btn = document.createElement("button");
-  btn.setAttribute("data-id", title);
+  btn.setAttribute("data-id", id);
   btn.className = "star";
   if (is_favorite) {
     btn.innerText = "★";
@@ -451,12 +453,14 @@ const notes = [
   {
     title: "My first note",
     text: "Bla bla bla",
-    is_favorite: true,
+    is_favorite: false,
+    id: "1607080390613",
   },
   {
     title: "My second note",
     text: "Bla bla bla",
-    is_favorite: true,
+    is_favorite: false,
+    id: "1607080442489",
   },
 ];
 

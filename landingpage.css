@@ -1,11 +1,3 @@
-:root {
-  --primary: #7f83ff;
-  --secondary: #f15900;
-  --grey: #555;
-  --white: #fff;
-  --dark: #2f2d2d;
-}
-
 * {
   padding: 0;
   margin: 0;
@@ -20,6 +12,15 @@ html {
 body {
   font-family: "Dosis", sans-serif;
   font-size: 1.6rem;
+  --primary: #7f83ff;
+  --secondary: #f15900;
+  --grey: #555;
+  --white: #fff;
+  --dark: #2f2d2d;
+}
+  /*   background-image: url(images/random.png);
+  background-repeat: no-repeat;
+  background-size: 100%; */
 }
 
 ul,
@@ -101,6 +102,9 @@ nav.nav {
   width: 55%;
   margin-top: 1.6rem;
   text-align: center;
+/*   background-color: rgb(255, 255, 255, 0.9);
+  padding: 30px; */
+  /* border-radius: 20%; */
 }
 
 .content h1 {
@@ -126,7 +130,7 @@ nav.nav {
 .content2 p {
   color: var(--grey);
   letter-spacing: 1px;
-  margin-bottom: 3rem;  
+  margin-bottom: 3rem;
 }
 
 .hero .hero__btn {
@@ -185,13 +189,13 @@ nav.nav {
 
 .container1 {
   display: flex;
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+ /*  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url("images/mobpic.png");
   height: 100vh;
   background-repeat: no-repeat;
   background-position: center center;
   background-position: cover;
-  position: relative;
+  position: relative; */
 }
 .welcome-text {
   position: absolute;
@@ -251,7 +255,6 @@ nav.nav {
   font-size: 60px;
   justify-content: center;
   align-items: center;
-  
 }
 .welcome-text a {
   padding: 1.6rem 3rem;
@@ -262,8 +265,6 @@ nav.nav {
   border-radius: 1rem;
   justify-content: center;
   align-items: center;
-
-
 }
 .welcome-text button {
   padding: 1.6rem 3rem;

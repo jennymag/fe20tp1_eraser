@@ -403,7 +403,7 @@ button.viewFavButton {
 }
 .gridContainer {
   display: grid;
-  grid-template-columns: 1fr 2fr 4fr;
+  grid-template-columns: 0.5fr 1fr 9fr;
   height: 100vh;
 }
 .mainMenu {
