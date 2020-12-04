@@ -3,164 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Fonts and icons -->
-<link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;700&display=swap" rel="stylesheet">     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@200&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,100&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/v4-shims.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-<!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css">
-    <title>Quire - Group Eraser</title>
+    <!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;700&display=swap" rel="stylesheet"> 
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="firstStyle.css">
+    <title>Quire landing page</title>
 </head>
 <body>
-    <!-- Main page -->
-    <a id="main"></a>
-    <section class="firstSection">
-        <div class="gridContainer">
-            <nav class="qNav">
-                <ul>
-                    <li><a href="infoIndex.html"><i class="fas fa-home"></a></i></li>
-                    <li id="logo"><a href="#main">Q</a></li>
-                    <li><i class="fas fa-search"></i></li>
-                    <li><a href="#favorite"><i class="fas fa-star"></a></i></li>
-                    <li><i class="fas fa-chart-line"></i></li>
-                    <li><i class="fas fa-cogs"></i></li>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav__center container">
+                <div class="logo">
+                    <img src="images/logo.png" alt="">
+                </div>
+
+                <ul class="nav__list">
+                    <a class="btn nav__btn signup" href="download.html">Download</a>
                 </ul>
-    
-            </nav>
-    
-            <nav class="notesList">
-                <div class="favorite">
-                    <h1>My Notes</h1>
-                </div>
-                <div id="notes"></div>
-    
-    
-    
-                <div class="buttonMain" id="buttonMainID">
-                    <div class="startBtns" id="startBtnsID">
-                        <button type="button" onclick="createNote()" class="makeNoteButton">
-                            <h1>Make a Note</h1>
-                        </button>
-                        <button type="button" onClick="showFavorite()" class="viewFavButton">
-                            <h1>Show Fav</h1>
-                        </button>
-                    </div>
-                </div>
-    
-    
-            </nav>
-    
-            <section>
-                <div class="container">
-    
-                </div>
-                <div class="content">
-    
-                    <div class="editorMain" id="editorMainID"></div>
-    
-                </div>
-    
-        </div>
-    
-        </div>
-    </section>
-
-
-<!-- Favorite page -->
-<a id="favorite"></a>
-<section class="firstSection">
-    <div class="gridContainer">
-        <nav class="qNav">
-            <ul>
-                <li><a href="infoIndex.html"><i class="fas fa-home"></a></i></li>
-                <li id="logo"><a href="#main">Q</a></li>
-                <li><i class="fas fa-search"></i></li>
-                <li><a href="#favorite"><i class="fas fa-star"></a></i></li>
-                <li><i class="fas fa-chart-line"></i></li>
-                <li><i class="fas fa-cogs"></i></li>
-            </ul>
-    
-        </nav>
-    
-        <nav class="notesList">
-            <div class="favorite">
-                <h1>Favorite Notes</h1>
-            </div>
-            <div id="favs">
             </div>
         </nav>
-    
-        <section>
-            <div class="container">
-                <h1 class="h1Note">My first note</h1>
-            </div>
 
-
-            <div class="content">
-                    
-                    
-                    <p class="time">Last modified:</p>
-                    <p class="time" id="demo"></p>
-          
-
-                <p class="notedText pFav">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec turpis in justo
-                    vulputate interdum et quis felis.
-                    Nullam sit amet urna quis dui sollicitudin vulputate. Curabitur quis justo in purus placerat dapibus.
-                    Phasellus et
-                    varius neque. Integer mollis vehicula urna eget finibus. Nam sapien mi, lacinia suscipit diam sit amet,
-                    aliquam
-                    <br><br>
-                    tincidunt arcu. Sed pretium metus nec erat accumsan, nec vulputate lectus rhoncus. Aliquam posuere id
-                    eros ut fringilla.
-                    Praesent ornare vehicula tellus a tristique. Pellentesque et enim vitae leo convallis posuere. Sed
-                    interdum iaculis mi.
-                    Nullam egestas nunc vel enim bibendum facilisis. Donec pharetra metus erat, eu aliquet diam ultricies
-                    quis. Class aptent
-                    taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas gravida semper
-                    odio at
-                    scelerisque.
-                </p>
-                <button onclick="myFunction()">Save</button>
-            </div>
-            
-            </div>
-
-    </div>
-</section>
-
-<!-- main page -->
-
-<!-- <section class="secondSection">
-
-        <main>
-        
-            <div class="noteSystem" id="noteSystemID">
-                <div class="buttonMain" id="buttonMainID">
-                    <div class="startBtns" id="startBtnsID">
-                        <button type="button" onclick="createNote()" class="makeNoteButton">
-                            <h1>Make a Note</h1>
-                        </button>
-                        <button type="button" onClick="showFavorite()" class="viewFavButton">
-                            <h1>Show Fav</h1>
-                        </button>
+        <div class="hero">
+            <div class="content container">
+                <h1>Quire</h1>
+                <p>Capture, organize,and share notes from anywhere.
+                    Your best ideas are always with you and always in sync.</p>
+                    <div class="content2 container">
+                    <h1>Work Anywhere</h1>
+                    <p>Keep important info handy by 
+                    syncing your notes to all your devices.</p>
+                    <h1>Your Notes, Your Way</h1>
+                    <p>Express yourself with formatting 
+                       tools that help you write how you think.</p>
+                       <h1>Find Things Fast</h1>
+                       <p>Get what you need, when you need it. 
+                           Search gives you results as you type.</p>
                     </div>
+                <div class="buttons">
+                    <a class="btn hero__btn hero__btn-blue" href="Index.html">Get Started</a>
+                    <button class="btn hero__btn">Discover</button>
                 </div>
-                <div class="editorMain" id="editorMainID"></div>
-        </main>
-</section>
- -->
-<!-- date -->
+            </div>
 
-
-
-
-    <script src="app.js"></script>
+            <div class="bottom__img">
+                <img src="images/random.png" alt="">
+            </div>
+        </div>
+    </header>
 </body>
 </html>
