@@ -405,8 +405,6 @@ function createTheNote({ title, text, is_favorite, id }) {
   const el = document.createElement("div");
   el.className = "note";
 
-  /* here i changed things */
-
   const btn = document.createElement("button");
   btn.setAttribute("data-id", id);
   btn.className = "star";

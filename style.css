@@ -510,3 +510,36 @@ li:hover {
   margin-bottom: 300px;
   margin-left: 20px;
 }
+
+/* SORT & BROWSE
+body {
+  margin: 20px;
+}
+#inputArea {
+  display: inline-grid;
+  min-width: 300px;
+}
+.notes {
+  border: 1px solid black;
+  max-width: 600px;
+}
+#inputText,
+#saveInputBtn {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+#list {
+  max-width: 100px;
+}
+.listContainer {
+  width: 300px;
+  border: 1px solid black;
+  height: 600px;
+  margin: 4px, 4px;
+  padding: 4px;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: justify;
+}
+*/
