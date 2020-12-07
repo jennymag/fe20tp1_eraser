@@ -236,12 +236,18 @@ nav.nav {
   background-position: center center;
   background-position: cover;
   position: relative;
+
 }
+
 .welcome-text {
   position: absolute;
   width: 1200px;
   margin: auto;
   text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% , -50%);
+  position: absolute;`
 }
 .welcome-text h1 {
   text-align: center;
@@ -251,6 +257,7 @@ nav.nav {
   font-size: 60px;
   justify-content: center;
   align-items: center;
+  
   
 }
 .welcome-text a {
