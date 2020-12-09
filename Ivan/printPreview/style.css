@@ -1,0 +1,27 @@
+#toolBar {
+    padding: 20px;
+    border: 2px solid black;
+    
+
+}
+#note {
+    padding: 20px;
+    border: 1px solid black;
+    height: 100%;
+    color: red;
+
+}
+#D1 {
+    display: flex;
+    grid-template-columns: 1fr 3fr;
+}
+
+#btn {
+    border-radius: 5rem;
+    background-color: black;
+    color: white;
+    
+    
+
+}
+
