@@ -13,8 +13,6 @@ if (localStorage.getItem("myFaveNotes") === null) {
   localStorage.setItem("myFaveNotes", strEmptyArrTwo);
 }
 
-
-
 /* Note loading function */
 function loadNotes() {
   var loadNames = JSON.parse(localStorage.getItem("savedNoteName"));
@@ -302,12 +300,10 @@ function editNote(editBtn_id) {
 }
 
 function favoriteNote(favBtn_id) {
-
   var favBtnId = document.getElementById(favBtn_id).id;
   var numFavId = favBtnId.replace("favOptionButtonID", "");
 
-  if(JSON.parse(localStorage.getItem("checkFavoriteID" + numFavId)) === null)
-  {
+  if (JSON.parse(localStorage.getItem("checkFavoriteID" + numFavId)) === null) {
     var getFavs = JSON.parse(localStorage.getItem("myFaveNotes"));
     var newFavNameAdd = "faveNoteNameID" + numFavId;
     getFavs.push(newFavNameAdd);
@@ -317,24 +313,12 @@ function favoriteNote(favBtn_id) {
     var parIsFav = JSON.stringify(isFavorite);
     var specFavorite = "checkFavoriteID" + numFavId;
     localStorage.setItem(specFavorite, parIsFav);
-  }
-  else if(JSON.parse(localStorage.getItem(specFavorite)) === true)
-  {
+  } else if (JSON.parse(localStorage.getItem(specFavorite)) === true) {
     var getFavsTwo = JSON.parse(localStorage.getItem("myFaveNotes"));
-    for(var k = 0; k < getFavsTwo.length; k++)
-    {
-       var cycFavList = getFavsTwo[k];
-       
+    for (var k = 0; k < getFavsTwo.length; k++) {
+      var cycFavList = getFavsTwo[k];
     }
-
-
   }
-
-
-
-
-
-
 }
 
 function visible(clicked_id) {
@@ -352,3 +336,8 @@ function visible(clicked_id) {
     }
   }
 }
+
+/* print notes function */
+document.getElementById("btn").onclick = function () {
+  document.getElementById("toolBar").hidden = true;
+};
