@@ -17,10 +17,9 @@ body {
   --grey: #555;
   --white: #fff;
   --dark: #2f2d2d;
-}
-  /*   background-image: url(images/random.png);
+  background-image: url(images/random1.png);
   background-repeat: no-repeat;
-  background-size: 100%; */
+  background-size: cover;
 }
 
 ul,
@@ -52,10 +51,6 @@ img {
 .header {
   position: relative;
   min-height: 100vh;
-}
-
-nav.nav {
-  padding: 1.6rem 0;
 }
 
 .nav__center {
@@ -99,12 +94,12 @@ nav.nav {
 }
 
 .content {
-  width: 55%;
-  margin-top: 1.6rem;
+  width: 40%;
   text-align: center;
-/*   background-color: rgb(255, 255, 255, 0.9);
-  padding: 30px; */
-  /* border-radius: 20%; */
+  background-color: rgb(255, 255, 255, 0.9);
+  padding: 30px;
+  border: 1px dotted lightgray;
+  border-radius: 10%;
 }
 
 .content h1 {
@@ -189,13 +184,13 @@ nav.nav {
 
 .container1 {
   display: flex;
- /*  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url("images/mobpic.png");
   height: 100vh;
   background-repeat: no-repeat;
   background-position: center center;
   background-position: cover;
-  position: relative; */
+  position: relative;
 }
 .welcome-text {
   position: absolute;
@@ -205,7 +200,7 @@ nav.nav {
 }
 .welcome-text h1 {
   text-align: center;
-  /*flex-direction: column;*/
+  flex-direction: column;
   color: rgb(15, 15, 15);
   text-transform: uppercase;
   font-size: 60px;

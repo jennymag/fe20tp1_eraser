@@ -400,10 +400,14 @@ button.viewFavButton {
   border-bottom: 1px solid grey;
   box-shadow: 0px 0px 10px grey;
   background-color: rgb(237, 237, 237);
+
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: justify;
 }
 .gridContainer {
   display: grid;
-  grid-template-columns: 0.5fr 1fr 9fr;
+  grid-template-columns: 0.5fr 2.12fr 6fr;
   height: 100vh;
 }
 .mainMenu {

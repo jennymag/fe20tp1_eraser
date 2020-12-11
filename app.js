@@ -13,6 +13,19 @@ if (localStorage.getItem("myFaveNotes") === null) {
   localStorage.setItem("myFaveNotes", strEmptyArrTwo);
 }
 
+function saveNote() {
+  var getNoteNames = JSON.parse(localStorage.getItem("savedNoteName"));
+  for (var q = 0; q < getNoteNames.length; q++) {
+    var cycleSaved = getNoteNames[q];
+    var specId = cycleSaved.replace("savedNoteID", "");
+    var updateTinyCont = tinymce.get("textEditorID" + specId).getContent;
+    var noteToPush = JSON.parse(localStorage.getItem("savedNoteID" + specId));
+    noteToPush[1] = updateTinyCont;
+    var noteToPushStr = JSON.stringify(noteToPush);
+    localStorage.setItem("savedNoteID" + specId, noteToPushStr);
+  }
+}
+
 /* Note loading function */
 function loadNotes() {
   var loadNames = JSON.parse(localStorage.getItem("savedNoteName"));
@@ -25,42 +38,43 @@ function loadNotes() {
     var contArr = JSON.parse(localStorage.getItem(getLoadedName));
     var loadButtonWrap = contArr[0];
     var loadTextContent = contArr[1];
-    var getNoteId = getLoadedName.replace("noteSaveInfoID", "");
-    var boolName = "firstSaveID" + getNoteId;
-    var getBool = localStorage.getItem(boolName);
-    var strBool = JSON.parse(getBool);
+    var getNoteId = getLoadedName.replace("savedNoteID", "");
 
-    if ((strBool = true)) {
-      var btnDivLoad = document.createElement("div");
-      document.getElementById("buttonMainID").appendChild(btnDivLoad);
-      btnDivLoad.outerHTML = loadButtonWrap;
+    var btnDivLoad = document.createElement("div");
+    document.getElementById("buttonMainID").appendChild(btnDivLoad);
+    btnDivLoad.outerHTML = loadButtonWrap;
 
-      var textDivLoad = document.createElement("div");
-      textDivLoad.setAttribute("class", "textCont");
-      textDivLoad.setAttribute("id", "textContID" + getNoteId);
+    var textDivLoad = document.createElement("div");
+    textDivLoad.setAttribute("class", "textCont");
+    textDivLoad.setAttribute("id", "textContID" + getNoteId);
 
-      var textEditorLoad = document.createElement("textarea");
-      textEditorLoad.setAttribute("class", "textEditor");
-      textEditorLoad.setAttribute("id", "textEditorID" + getNoteId);
-      textEditorLoad.innerHTML = loadTextContent;
+    var textEditorLoad = document.createElement("textarea");
+    textEditorLoad.setAttribute("class", "textEditor");
+    textEditorLoad.setAttribute("id", "textEditorID" + getNoteId);
+    textEditorLoad.innerHTML = loadTextContent;
 
-      textDivLoad.appendChild(textEditorLoad);
-      document.getElementById("editorMainID").appendChild(textDivLoad);
+    textDivLoad.appendChild(textEditorLoad);
+    document.getElementById("editorMainID").appendChild(textDivLoad);
 
-      if (getLoadedName != lastLoadName) {
-        document.getElementById("textContID" + getNoteId).style.position =
-          "absolute";
-        document.getElementById("textContID" + getNoteId).style.left = "-999em";
-      } else {
-        document.getElementById("textContID" + getNoteId).style.position = "";
-        document.getElementById("textContID" + getNoteId).style.left = "";
-      }
-
-      tinymce.init({ selector: "textarea", width: "100%", branding: false });
-    } else if ((strBool = false)) {
-      var getTextEditor = document.getElementById("textEditorID" + getNoteId);
-      getTextEditor.innerHTML = loadTextContent;
+    if (getLoadedName != lastLoadName) {
+      document.getElementById("textContID" + getNoteId).style.position =
+        "absolute";
+      document.getElementById("textContID" + getNoteId).style.left = "-999em";
+    } else {
+      document.getElementById("textContID" + getNoteId).style.position = "";
+      document.getElementById("textContID" + getNoteId).style.left = "";
     }
+
+    tinymce.init({
+      selector: "textarea",
+      oninit: setInterval(saveNote(), 1000),
+      width: "100%",
+      branding: false,
+      init_instance_callback: function (editor) {
+        var freeTiny = document.querySelector(".tox .tox-notification--in");
+        freeTiny.style.display = "none";
+      },
+    });
   }
 }
 
@@ -192,6 +206,21 @@ function createNote() {
 
   tinymce.init({ selector: "textarea", width: "100%", branding: false });
 
+  var newNoteSaveName = "savedNoteID" + noteID;
+  var getCurrNotes = JSON.parse(localStorage.getItem("savedNoteName"));
+  getCurrNotes.push(newNoteSaveName);
+  var strCurrNotes = JSON.stringify(getCurrNotes);
+  localStorage.setItem("savedNoteName", strCurrNotes);
+
+  var wrapContent = buttonWrap.outerHTML;
+  var noteContent = tinymce.get("textEditorID" + noteID).getContent();
+
+  var noteSaveContent = [];
+  noteSaveContent.push(wrapContent);
+  noteSaveContent.push(noteContent);
+  var strNoteSaveCont = JSON.stringify(noteSaveContent);
+  localStorage.setItem(newNoteSaveName, strNoteSaveCont);
+
   function showCurrentNote() {
     var textEditorContClass = document.getElementsByClassName("textCont");
     var textEditorContClassLength = textEditorContClass.length;
@@ -211,60 +240,8 @@ function createNote() {
   }
 
   showCurrentNote();
-}
 
-function saveNote(operate_id) {
-  var operateOptionIDBtn = document.getElementById(operate_id).id;
-  /*remove the specific save button id from it, so we have the strict numeric id used to save other stuff */
-  var saveNoteID = operateOptionIDBtn.replace("saveOptionButtonID", "");
-
-  var firstSave = "firstSaveID" + saveNoteID;
-  if (localStorage.getItem(firstSave) === null) {
-    var newSaveName = "noteSaveInfoID" + saveNoteID;
-    var getSavedNamesParsed = JSON.parse(localStorage.getItem("savedNoteName"));
-    getSavedNamesParsed.push(newSaveName);
-    var getSavedNamesStr = JSON.stringify(getSavedNamesParsed);
-    localStorage.setItem("savedNoteName", getSavedNamesStr);
-
-    /* Content within note */
-    var noteContent = tinymce.get("textEditorID" + saveNoteID).getContent();
-
-    /* buttonwrap content */
-    var noteButtonSave = document.getElementById("buttonWrapID" + saveNoteID);
-    var noteButtonElementContent = noteButtonSave.outerHTML;
-
-    /*create array with note information within it */
-    var noteSaveInfo = [];
-    noteSaveInfo.push(noteButtonElementContent);
-    noteSaveInfo.push(noteContent);
-
-    var strNoteSaveInfo = JSON.stringify(noteSaveInfo);
-
-    /* store info in localstorage */
-    localStorage.setItem(newSaveName, strNoteSaveInfo);
-    var firstSaveBool = true;
-    var strFirstSaveBool = JSON.stringify(firstSaveBool);
-    localStorage.setItem(firstSave, strFirstSaveBool);
-  } else if (
-    JSON.parse(localStorage.getItem(firstSave)) === true ||
-    JSON.parse(localStorage.getItem(firstSave)) === false
-  ) {
-    var savedBeforeBool = false;
-    var savedBeforeStr = JSON.stringify(savedBeforeBool);
-    localStorage.setItem(firstSave, savedBeforeStr);
-
-    var updateNoteContent = tinymce
-      .get("textEditorID" + saveNoteID)
-      .getContent();
-
-    var contentHolder = "noteSaveInfoID" + saveNoteID;
-    var noteCont = JSON.parse(
-      localStorage.getItem("noteSaveInfoID" + saveNoteID)
-    );
-    noteCont[1] = updateNoteContent;
-    var transToStr = JSON.stringify(noteCont);
-    localStorage.setItem(contentHolder, transToStr);
-  }
+  saveNote();
 }
 
 function deleteNote(delBtn_id) {
@@ -300,23 +277,36 @@ function editNote(editBtn_id) {
 }
 
 function favoriteNote(favBtn_id) {
+  var getSaves = JSON.parse(localStorage.getItem("savedNoteName"));
   var favBtnId = document.getElementById(favBtn_id).id;
   var numFavId = favBtnId.replace("favOptionButtonID", "");
+  if (getSaves.length == 0) {
+    alert("Please save your note first!");
+  }
 
-  if (JSON.parse(localStorage.getItem("checkFavoriteID" + numFavId)) === null) {
-    var getFavs = JSON.parse(localStorage.getItem("myFaveNotes"));
-    var newFavNameAdd = "faveNoteNameID" + numFavId;
-    getFavs.push(newFavNameAdd);
-    var getFavsStr = JSON.stringify(getFavs);
-    localStorage.setItem("myFaveNotes", getFavsStr);
-    var isFavorite = true;
-    var parIsFav = JSON.stringify(isFavorite);
-    var specFavorite = "checkFavoriteID" + numFavId;
-    localStorage.setItem(specFavorite, parIsFav);
-  } else if (JSON.parse(localStorage.getItem(specFavorite)) === true) {
-    var getFavsTwo = JSON.parse(localStorage.getItem("myFaveNotes"));
-    for (var k = 0; k < getFavsTwo.length; k++) {
-      var cycFavList = getFavsTwo[k];
+  for (var p = 0; p < getSaves.length; p++) {
+    var checkFaveSave = "noteSaveInfoID" + numFavId;
+    if (checkFaveSave != getSaves[p]) {
+      alert("Please save the note first!");
+    } else if ((checkFaveSave = getSaves[p])) {
+      if (
+        JSON.parse(localStorage.getItem("checkFavoriteID" + numFavId)) === null
+      ) {
+        var getFavs = JSON.parse(localStorage.getItem("myFaveNotes"));
+        var newFavNameAdd = "faveNoteNameID" + numFavId;
+        getFavs.push(newFavNameAdd);
+        var getFavsStr = JSON.stringify(getFavs);
+        localStorage.setItem("myFaveNotes", getFavsStr);
+        var isFavorite = true;
+        var parIsFav = JSON.stringify(isFavorite);
+        var specFavorite = "checkFavoriteID" + numFavId;
+        localStorage.setItem(specFavorite, parIsFav);
+      } else if (JSON.parse(localStorage.getItem(specFavorite)) === true) {
+        var getFavsTwo = JSON.parse(localStorage.getItem("myFaveNotes"));
+        for (var k = 0; k < getFavsTwo.length; k++) {
+          var cycFavList = getFavsTwo[k];
+        }
+      }
     }
   }
 }
@@ -337,7 +327,6 @@ function visible(clicked_id) {
   }
 }
 
-/* print notes function */
-document.getElementById("btn").onclick = function () {
-  document.getElementById("toolBar").hidden = true;
-};
+function testA() {
+  var testTiny = tinymc.get("textEditorID1").getContent;
+}
