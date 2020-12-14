@@ -1,0 +1,606 @@
+/* Info styling */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  --primary: #7f83ff;
+  --secondary: #f15900;
+  --grey: #555;
+  --white: #fff;
+  --dark: #2f2d2d;
+}
+
+body {
+  font-family: "Dosis", sans-serif;
+  font-size: 1.6rem;
+  margin: 0;
+  height: 100%;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.bottom_infopage_img,
+.logo {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.container {
+  max-width: 114rem;
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 1200px) {
+  .container {
+    padding: 0 3rem;
+  }
+}
+
+.header {
+  position: relative;
+  min-height: 100vh;
+}
+
+nav.nav {
+  padding: 1.6rem 0;
+}
+
+.nav__center {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn {
+  display: inline-block;
+  outline: none;
+  border: none;
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  background-color: transparent;
+  transition: all 300ms ease-in-out;
+  cursor: pointer;
+}
+
+.nav__btn:not(:last-child) {
+  margin-right: 0.7rem;
+}
+
+.nav__btn {
+  padding: 1rem 1.3rem;
+  border-radius: 5rem;
+}
+
+.nav__btn.signup {
+  color: var(--white);
+  background-color: var(--primary);
+}
+
+.btn:hover {
+  background-color: var(--secondary);
+}
+
+.content {
+  width: 55%;
+  margin-top: 1.6rem;
+  text-align: center;
+}
+
+.content h1 {
+  color: var(--dark);
+  font-size: 5rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.content p {
+  color: var(--grey);
+  letter-spacing: 1px;
+  margin-bottom: 3rem;
+}
+
+.content2 h1 {
+  color: var(--dark);
+  font-size: 3rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.content2 p {
+  color: var(--grey);
+  letter-spacing: 1px;
+  margin-bottom: 3rem;
+}
+
+.hero .hero__btn {
+  padding: 1.6rem 3rem;
+  width: 17rem;
+  max-width: 40%;
+  border: 1px solid var(--primary);
+  border-radius: 1rem;
+}
+
+.hero .hero__btn:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.hero .hero__btn.hero__btn-blue {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+.hero .hero__btn.hero__btn-blue:hover {
+  background-color: var(--secondary);
+}
+
+.bottom__img {
+  position: center;
+  bottom: 0%;
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 996px) {
+  .header {
+    min-height: 90vh;
+  }
+
+  .content {
+    width: 100%;
+    margin-top: 10rem;
+  }
+}
+
+@media only screen and (max-width: 996px) {
+  .header {
+    min-height: 100vh;
+  }
+
+  .content h1 {
+    font-size: 3rem;
+  }
+}
+
+.wrapper {
+  width: 1170px;
+  margin: auto;
+  padding: 0;
+}
+
+.container1 {
+  display: flex;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("images/mobpic.png");
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-position: cover;
+  position: relative;
+}
+.welcome-text {
+  position: absolute;
+  width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.welcome-text h1 {
+  text-align: center;
+  color: rgb(15, 15, 15);
+  text-transform: uppercase;
+  font-size: 60px;
+}
+.welcome-text a {
+  border: 1px solid rgb(10, 10, 10);
+  padding: 10px 25px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+  margin-top: 50px;
+  display: inline-block;
+  color: rgb(12, 12, 12);
+}
+.welcome-text a :hover {
+  background: rgb(230, 27, 27);
+  color: #333;
+}
+
+.wrapper {
+  width: 1170px;
+  margin: auto;
+  padding: 0;
+}
+
+.container1 {
+  display: flex;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("images/pic2.png");
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-position: cover;
+  position: relative;
+}
+.welcome-text {
+  position: absolute;
+  width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+.welcome-text h1 {
+  text-align: center;
+  margin: 200px;
+  color: rgb(247, 241, 241);
+  text-transform: uppercase;
+  font-size: 60px;
+  justify-content: center;
+  align-items: center;
+}
+.welcome-text a {
+  padding: 1.6rem 3rem;
+  width: 15rem;
+  max-width: 40%;
+  text-transform: uppercase;
+  border: 1px solid var(--primary);
+  border-radius: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+.welcome-text button {
+  padding: 1.6rem 3rem;
+  width: 15rem;
+  max-width: 40%;
+  text-transform: uppercase;
+  border: 1px solid var(--primary);
+  border-radius: 1rem;
+}
+
+.welcome-text a :hover {
+  background: rgb(230, 27, 27);
+  color: #333;
+}
+
+/* Note css */
+.secondSection {
+  margin: 200px;
+}
+.buttonCont {
+  display: inline-flex !important;
+}
+
+.makeNoteButton {
+  border-width: 4px !important;
+  width: 300px !important;
+  height: 120px !important;
+  background-color: transparent !important;
+}
+
+button.noteButton {
+  border-width: 4px !important;
+  width: 300px !important;
+  height: 120px !important;
+  background-color: transparent !important;
+  z-index: 1 !important;
+}
+div.noteButtonText {
+  z-index: 0 !important;
+  padding: 8px !important;
+  position: absolute !important;
+}
+
+.buttonMain {
+  display: inline-flex !important;
+  flex-direction: column !important;
+}
+
+.buttonWrap {
+  display: inline-flex !important;
+}
+.editorMain {
+  width: 100% !important;
+  overflow: hidden !important;
+  display: inline-flex !important;
+  flex: 1;
+}
+.textCont {
+  display: flex !important;
+  flex: 1 1 auto !important;
+  width: 100% !important;
+}
+
+.noteSystem {
+  width: 100% !important;
+  display: flex !important;
+  flex-flow: row !important;
+  height: 100% !important;
+  position: absolute !important;
+  background-color: transparent;
+}
+
+.noteSystem,
+.editorMain {
+  flex: 1 1 auto !important;
+}
+
+.noteOptions {
+  display: inline-grid !important;
+  grid-template-columns: auto auto !important;
+  padding: 8px !important;
+}
+
+button.saveOptionButton,
+button.deleteOptionButton,
+button.favOptionButton,
+button.editOptionButton,
+button.viewFavButton {
+  width: 50px !important;
+  height: 48px !important;
+  margin: 0px !important;
+}
+
+.startBtns {
+  display: inline-flex !important;
+  flex-direction: row !important;
+}
+.viewFavButton {
+  font-size: 6px !important;
+}
+
+/* favorite page */
+.notedText {
+  padding: 10px;
+}
+
+#containerContentDiv h1 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+#containerContentDiv p {
+  font-size: 20px;
+}
+
+#containerContentDiv {
+  margin-top: 100px;
+  background-color: white;
+  min-width: 75%;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 60px;
+}
+
+#containerContent {
+  display: flex;
+  justify-content: center;
+}
+
+#h1 {
+  font-family: "Roboto", sans-serif;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid gray;
+  background-color: rgb(88, 91, 137);
+  color: white;
+}
+
+.firstSection {
+  font-family: "Roboto", sans-serif;
+  border-bottom: 1px solid grey;
+  border-top: 1px solid grey;
+  border-right: 1px solid grey;
+}
+.star {
+  display: flex;
+  font-size: 20px;
+  color: goldenrod;
+  align-content: flex-end;
+  background-color: transparent;
+  border: none;
+}
+.pFav {
+  font-size: 20px;
+}
+.star:focus {
+  outline: none;
+}
+
+#notesList {
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  box-shadow: 0px 0px 10px grey;
+  background-color: rgb(142, 136, 213);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: 5% 22% 75%;
+  height: 100vh;
+}
+.mainMenu {
+  display: flex;
+
+  font-size: 60px;
+  font-family: "Rokkitt", serif;
+  justify-content: center;
+  margin-top: 19px;
+}
+.mainMenu:hover {
+  background-color: rgb(7, 7, 45);
+}
+.favorite {
+  display: flex;
+  justify-content: center;
+  box-shadow: 0px 24px 3px -24px grey;
+  margin-bottom: 50px;
+  font-size: 20px;
+}
+.note {
+  /*  padding-top: 10px;
+  padding-left: 20px;
+  margin-top: 40px; */
+  min-width: 100%;
+  border: 1px solid lightgray;
+  text-align: left;
+  min-height: 120px;
+  padding: 20px;
+  background-color: rgb(183, 178, 238);
+  color: white;
+}
+
+.note:hover {
+  box-shadow: 0px 0px 20px gray;
+}
+
+.note:focus {
+  background-color: rgb(95, 94, 96);
+  border: 1px solid lightgray;
+  box-shadow: 0px 0px 20px grey;
+  text-decoration: none;
+  outline: none;
+}
+
+.content {
+  margin: 0 auto;
+  width: 70%;
+}
+.mainMenu {
+  display: flex;
+  color: white;
+  font-size: 60px;
+  font-family: "Rokkitt", serif;
+  justify-content: center;
+  padding: 20px;
+  margin-top: 19px;
+}
+.mainMenu:hover {
+  background-color: rgb(7, 7, 45);
+}
+
+#logo {
+  font-size: 39px;
+}
+
+.qInfo {
+  margin-top: 170px;
+}
+
+#addNote {
+  border: none;
+  font-size: 30px;
+  outline: none;
+  padding-left: 85%;
+  padding-bottom: 10px;
+}
+
+.time {
+  margin: 40px;
+  font-style: italic;
+  margin-top: -30px;
+  font-size: 22px;
+}
+.qNav {
+  text-align: center;
+  border: 1px solid #f4f5f2;
+  background-color: rgb(88, 91, 137);
+}
+.qUl {
+  list-style-type: none;
+  display: flex;
+  color: black;
+  font-size: 40px;
+  flex-direction: column;
+  font-family: "Rokkitt", serif;
+}
+
+.qLi {
+  text-decoration: none;
+  color: white;
+  font-size: 30px;
+  padding: 20px;
+}
+
+.qLi:hover {
+  background-color: rgb(7, 7, 45);
+}
+/* favorite page ends here */
+
+/* date */
+.thirdSection {
+  margin-top: 600px;
+  margin-bottom: 300px;
+  margin-left: 20px;
+}
+
+/* SORT & BROWSE
+body {
+  margin: 20px;
+}
+#inputArea {
+  display: inline-grid;
+  min-width: 300px;
+}
+.notes {
+  border: 1px solid black;
+  max-width: 600px;
+}
+#inputText,
+#saveInputBtn {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+#list {
+  max-width: 100px;
+}
+.listContainer {
+  width: 300px;
+  border: 1px solid black;
+  height: 600px;
+  margin: 4px, 4px;
+  padding: 4px;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: justify;
+}
+
+------print page -----
+#toolBar {
+    padding: 20px;
+    border: 2px solid black;
+    
+
+}
+#notePrints {
+    padding: 20px;
+    border: 1px solid black;
+    height: 100%;
+    color: red;
+
+}
+#D1 {
+    display: flex;
+    grid-template-columns: 1fr 3fr;
+}
+
+#btn {
+    border-radius: 5rem;
+    background-color: black;
+    color: white;
+    
+    
+
+}
+*/
