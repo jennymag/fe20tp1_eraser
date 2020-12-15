@@ -20,6 +20,7 @@ function loadPage() {
 
   for (var v = 0; v < loadNoteNames.length; v++) {
     var noteName = loadNoteNames[v];
+    var lastNoteName = loadNoteNames[loadNoteNames.length - 1];
     var noteToLoad = JSON.parse(localStorage.getItem(noteName));
     var noteNum = loadNoteNames[v].replace("savedNoteID", "");
     var loadWrap = document.createElement("div");
@@ -51,7 +52,14 @@ function loadPage() {
       },
     });
 
-    var ape;
+    if (noteName != lastNoteName) {
+      document.getElementById("textContID" + noteNum).style.position =
+        "absolute";
+      document.getElementById("textContID" + noteNum).style.left = "-999em";
+    } else if ((noteName = lastNoteName)) {
+      document.getElementById("textContID" + noteNum).style.position = "";
+      document.getElementById("textContID" + noteNum).style.left = "";
+    }
   }
 }
 
@@ -100,6 +108,18 @@ function lastEdited(x) {
   document.getElementById("demo").innerHTML = x;
 }
 
+function date_() {
+  let dateObj = new Date();
+  let newdate;
+  let month = dateObj.getUTCMonth() + 1;
+  let day = dateObj.getUTCDate();
+  let year = dateObj.getUTCFullYear();
+
+  newdate = year + "-" + month + "-" + day;
+  console.log(newdate);
+  return newdate;
+}
+
 function mainPage() {
   list.innerHTML = "";
   content.innerHTML = "";
@@ -144,6 +164,30 @@ function searchPage() {
   list.innerHTML = "";
   content.innerHTML = "";
   title.innerText = "Search";
+
+  let inputDiv = document.createElement("div");
+  inputDiv.classList.add("search");
+  list.appendChild(inputDiv);
+
+  let inputInnerDiv = document.createElement("div");
+  inputInnerDiv.classList.add("search");
+  inputDiv.appendChild(inputInnerDiv);
+
+  let inputField = document.createElement("input");
+  inputField.classList.add("inputField");
+  inputField.placeholder = "Search for note by title..";
+  inputInnerDiv.appendChild(inputField);
+
+  /*
+
+  <div class="search">
+  <div class="searchInput">
+      <input type="text" placeholder="Search...">
+      
+      
+      </div>
+</div>
+*/
 }
 function statisticPage() {
   tinymce.remove();
@@ -220,6 +264,7 @@ function createNote() {
   var inputTitle = document.createElement("input");
   inputTitle.setAttribute("id", "titleInpID" + getNoteID);
   inputTitle.setAttribute("class", "titleInp");
+  inputTitle.style.left = "-999em";
   inputTitle.setAttribute("onfocusout", "saveNoteTitle(this.id)");
   inputTitle.setAttribute("maxlength", "12");
 
@@ -270,7 +315,7 @@ function createNote() {
   deleteOptionBtn.setAttribute("class", "deleteOptionBtn");
   deleteOptionBtn.setAttribute("id", "deleteOptionBtnID" + getNoteID);
   deleteOptionBtn.setAttribute("onClick", "deleteNote(this.id)");
-  deleteOptionBtn.innerHTML = '<i class="fa fa-trash"></i>';
+  deleteOptionBtn.innerHTML = '<i class="fas fa-trash"></i>';
 
   var textCont = document.createElement("div");
   textCont.setAttribute("class", "textCont");
@@ -386,6 +431,7 @@ function favoriteNote(favBtn) {
   var favNoteName = "savedNoteID" + favNumID;
   var favNoteArr = JSON.parse(localStorage.getItem(favNoteName));
   var favNoteBoo = JSON.parse(favNoteArr[2]);
+  var favNoteBtnTwo = document.getElementById("favOptionBtnID" + favNumID);
 
   if (favNoteBoo === false) {
     favNoteBoo = true;
@@ -393,12 +439,14 @@ function favoriteNote(favBtn) {
     favNoteArr[2] = favNoteBooStr;
     var favNoteArrStr = JSON.stringify(favNoteArr);
     localStorage.setItem(favNoteName, favNoteArrStr);
+    favNoteBtnTwo.innerHTML = '<i class="fas fa-heart"></i>';
   } else if (favNoteBoo === true) {
     favNoteBoo = false;
     var favNoteBooStrTwo = JSON.stringify(favNoteBoo);
     favNoteArr[2] = favNoteBooStrTwo;
     var favNoteArrStrTwo = JSON.stringify(favNoteArr);
     localStorage.setItem(favNoteName, favNoteArrStrTwo);
+    favNoteBtnTwo.innerHTML = '<i class="far fa-heart"></i>';
   }
 }
 

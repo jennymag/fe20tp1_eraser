@@ -284,7 +284,7 @@ nav.nav {
 .makeNoteButton {
   border-width: 4px !important;
   width: 300px !important;
-  min-height: 200px !important;
+  height: 120px !important;
   background-color: transparent !important;
 }
 
@@ -490,6 +490,15 @@ aside {
   margin-top: 170px;
 }
 
+.inputField {
+  width: 100%;
+  height: 30px;
+}
+
+.inputInnerDiv {
+  padding: 200px;
+}
+
 #addNote {
   border: none;
   font-size: 30px;
@@ -506,7 +515,6 @@ aside {
 }
 .qNav {
   text-align: center;
-  border: 1px solid #f4f5f2;
   background-color: rgb(88, 91, 137);
 }
 .qUl {
