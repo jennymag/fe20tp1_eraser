@@ -22,7 +22,6 @@ function loadPage() {
     var noteName = loadNoteNames[v];
     var noteToLoad = JSON.parse(localStorage.getItem(noteName));
     var noteNum = loadNoteNames[v].replace("savedNoteID", "");
-
     var loadWrap = document.createElement("div");
     document.getElementById("notesListContentDiv").appendChild(loadWrap);
     loadWrap.outerHTML = noteToLoad[0];
@@ -51,6 +50,8 @@ function loadPage() {
         });
       },
     });
+
+    var ape;
   }
 }
 
@@ -87,6 +88,16 @@ function preview(note) {
   let p = document.createElement("p");
   p.innerText = note.text;
   div_2.appendChild(p);
+
+  let button = document.createElement("button");
+  button.innerText = "Save";
+  button.id = "demo";
+  div_2.appendChild(button);
+  button.addEventListener("click", lastEdited);
+}
+function lastEdited(x) {
+  x = document.lastModified;
+  document.getElementById("demo").innerHTML = x;
 }
 
 function mainPage() {
@@ -193,7 +204,7 @@ function createNote() {
 
   var noteButton = document.createElement("span");
   noteButton.setAttribute("id", getNoteID);
-  noteButton.setAttribute("class", "noteButton");
+  noteButton.setAttribute("class", "note");
   noteButton.setAttribute("onclick", "visible(this.id)");
 
   var noteButtonText = document.createElement("div");
@@ -249,7 +260,7 @@ function createNote() {
   favOptionBtn.setAttribute("class", "favOptionBtn");
   favOptionBtn.setAttribute("id", "favOptionBtnID" + getNoteID);
   favOptionBtn.setAttribute("onClick", "favoriteNote(this.id)");
-  favOptionBtn.innerHTML = '<i class="fa fa-star"</i>';
+  favOptionBtn.innerHTML = '<i class="far fa-heart"></i>';
 
   var deleteOption = document.createElement("div");
   deleteOption.setAttribute("class", "deleteOption");
@@ -277,11 +288,12 @@ function createNote() {
   textCont.appendChild(textEditor);
   buttonWrap.appendChild(noteOptions);
   editOption.appendChild(editOptionBtn);
+  noteOptions.appendChild(editOption);
   favOption.appendChild(favOptionBtn);
   noteOptions.appendChild(favOption);
   deleteOption.appendChild(deleteOptionBtn);
   noteOptions.appendChild(deleteOption);
-  noteOptions.appendChild(editOption);
+
   document.getElementById("notesListContentDiv").appendChild(buttonWrap);
   document.getElementById("containerContent").appendChild(textCont);
 
@@ -317,7 +329,6 @@ function createNote() {
       var cycConts = textContClass[x];
       var cycContID = cycConts.id;
       var getCycNum = cycContID.replace("textContID", "");
-      var getSavedName = "savedNoteID" + getCycNum;
 
       if (cycConts != document.getElementById("textContID" + getNoteID)) {
         cycConts.style.position = "absolute";
