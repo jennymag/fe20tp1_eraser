@@ -484,8 +484,8 @@ function editNote(editBtn) {
     inputEditTwo.style.position = "absolute";
     inputEditTwo.style.left = "-999em";
 
-    titleToEdit.style.position = "";
-    titleToEdit.style.left = "";
+    titleToEditTwo.style.position = "";
+    titleToEditTwo.style.left = "";
   } else if (inputEditTwo !== document.activeElement) {
     inputEditTwo.focus();
     inputEditTwo.style.position = "absolute";
