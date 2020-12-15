@@ -1,6 +1,6 @@
 let list = document.getElementById("notesList");
 let content = document.getElementById("containerContent");
-let title = document.getElementById("h1");
+let title = document.getElementById("title");
 let h1_1;
 let ul_1;
 let li_1;
@@ -11,39 +11,21 @@ let arr = [
     text: "Bla bla bla bla bla bla",
     id: Date.now(),
   },
-  {
-    title: "My second note",
-    text: "Bla jajajajaajaaa bla bla",
-    id: Date.now() + 64636343,
-  },
 ];
 
-function visableDom() {
-  list.style.visibility = "visible";
-  content.style.visibility = "visible";
-}
+tinymce.init({
+  selector: "mytextarea",
+  plugins: "print",
+  menubar: "file",
+  toolbar: "print",
+});
 
-function printOutDom() {
-  h1_1 = document.createElement("h1");
-  h1_1.id = "h1";
-  list.appendChild(h1_1);
+function preview() {
+  /* let this be */
+  content.innerHTML = "";
+  /* << */
 
-  let div_1 = document.createElement("div");
-  div_1.id = "notesListContentDiv";
-  list.appendChild(div_1);
-
-  ul_1 = document.createElement("ul");
-  ul_1.classList.add("notesListContentContainer");
-  div_1.appendChild(ul_1);
-
-  li_1 = document.createElement("li");
-  li_1.classList.add("notesListContent");
-  ul_1.appendChild(li_1);
-
-  li_2 = document.createElement("li");
-  li_2.classList.add("notesListContent");
-  ul_1.appendChild(li_2);
-
+  /* change this */
   div_2 = document.createElement("div");
   div_2.id = "containerContentDiv";
   content.appendChild(div_2);
@@ -58,17 +40,22 @@ function printOutDom() {
   div_2.appendChild(p);
 }
 
-function hidDom() {
-  list.style.visibility = "hidden";
-  content.style.visibility = "hidden";
-}
 function printAndEdit() {}
 
 function mainPage() {
-  hidDom();
-  visableDom();
-  h1_1.innerText = "My notes";
-  addNotes();
+  list.innerHTML = "";
+
+  addBtn = document.createElement("span");
+  addBtn.innerText = "+";
+  addBtn.id = "addButtonSmall";
+  addBtn.addEventListener("click", addNotes);
+  list.appendChild(addBtn);
+
+  let div_1 = document.createElement("div");
+  div_1.id = "notesListContentDiv";
+  list.appendChild(div_1);
+
+  title.innerText = "My notes";
 }
 
 function landingPage() {
@@ -76,25 +63,23 @@ function landingPage() {
 }
 
 function favoritePage() {
-  hidDom();
-  visableDom();
-  h1_1.innerText = "My favorite";
+  list.innerHTML = "";
+  title.innerText = "My favorite";
+  addNotes();
+  preview();
 }
 
 function searchPage() {
-  hidDom();
-  visableDom();
-  h1_1.innerText = "Search";
+  list.innerHTML = "";
+  title.innerText = "Search";
 }
 function statisticPage() {
-  hidDom();
-  visableDom();
-  h1_1.innerText = "My statistic";
+  list.innerHTML = "";
+  title.innerText = "My statistic";
 }
 function settingsPage() {
-  hidDom();
-  visableDom();
-  h1_1.innerText = "My settings";
+  list.innerHTML = "";
+  title.innerText = "My settings";
 }
 
 function addNotes() {
@@ -102,8 +87,7 @@ function addNotes() {
     let button = document.createElement("button");
     button.classList.add("note");
     button.id = note.id;
-    button.addEventListener("click", preview);
-    li_2.appendChild(button);
+    list.appendChild(button);
 
     let h2_1 = document.createElement("h2");
     h2_1.innerText = note.title;
@@ -114,16 +98,39 @@ function addNotes() {
     button.appendChild(p_1);
   }
 }
+function hamburgerMenu() {
+  let x = document.getElementById("qNavMob");
 
-function preview() {}
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
 
-printOutDom();
+function removeNotes() {}
 
 mainPage();
 
 document.getElementById("logo").addEventListener("click", mainPage);
-document.getElementById("addButton").addEventListener("click", addNotes);
-document.getElementById("search").addEventListener("click", searchPage);
-document.getElementById("favorite").addEventListener("click", favoritePage);
-document.getElementById("statistic").addEventListener("click", statisticPage);
-document.getElementById("settings").addEventListener("click", settingsPage);
+document.getElementById("main").addEventListener("click", mainPage);
+
+for (let el of document.getElementsByClassName("search")) {
+  el.addEventListener("click", searchPage);
+}
+
+for (let el of document.getElementsByClassName("favorite")) {
+  el.addEventListener("click", favoritePage);
+}
+
+for (let el of document.getElementsByClassName("statistic")) {
+  el.addEventListener("click", statisticPage);
+}
+for (let el of document.getElementsByClassName("settings")) {
+  el.addEventListener("click", settingsPage);
+}
+for (let el of document.getElementsByClassName("addButton")) {
+  el.addEventListener("click", addNotes);
+}
+
+document.getElementById("ham").addEventListener("click", hamburgerMenu);
