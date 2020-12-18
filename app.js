@@ -15,54 +15,6 @@ if (localStorage.getItem("madeAnyNote") === null) {
   localStorage.setItem("madeAnyNote", hasMadeNote);
 }
 
-function loadPage() {
-  var loadNoteNames = JSON.parse(localStorage.getItem("savedNoteName"));
-
-  for (var v = 0; v < loadNoteNames.length; v++) {
-    var noteName = loadNoteNames[v];
-    var lastNoteName = loadNoteNames[loadNoteNames.length - 1];
-    var noteToLoad = JSON.parse(localStorage.getItem(noteName));
-    var noteNum = loadNoteNames[v].replace("savedNoteID", "");
-    var loadWrap = document.createElement("div");
-    document.getElementById("notesListContentDiv").appendChild(loadWrap);
-    loadWrap.outerHTML = noteToLoad[0];
-
-    var loadTxtCont = document.createElement("div");
-    loadTxtCont.setAttribute("class", "textCont");
-    loadTxtCont.setAttribute("id", "textContID" + noteNum);
-
-    var loadTextArea = document.createElement("textarea");
-    loadTextArea.setAttribute("class", "textEditor");
-    loadTextArea.setAttribute("id", "textEditorID" + noteNum);
-
-    loadTxtCont.appendChild(loadTextArea);
-    document.getElementById("containerContent").appendChild(loadTxtCont);
-    tinymce.init({
-      selector: "textarea",
-      plugins: "print",
-      branding: false,
-      width: "100%",
-      menubar: "file",
-      statusbar: false,
-      toolbar: "print",
-      setup: function (editor) {
-        editor.on("init", function () {
-          tinymce.get("textEditorID" + noteNum).setContent(noteToLoad[1]);
-        });
-      },
-    });
-
-    if (noteName != lastNoteName) {
-      document.getElementById("textContID" + noteNum).style.position =
-        "absolute";
-      document.getElementById("textContID" + noteNum).style.left = "-999em";
-    } else if ((noteName = lastNoteName)) {
-      document.getElementById("textContID" + noteNum).style.position = "";
-      document.getElementById("textContID" + noteNum).style.left = "";
-    }
-  }
-}
-
 let list = document.getElementById("notesList");
 let content = document.getElementById("containerContent");
 let title = document.getElementById("title");
@@ -77,6 +29,98 @@ let arr = [
     id: Date.now(),
   },
 ];
+
+function loadPage()
+
+{
+  var loadNoteNames = JSON.parse(localStorage.getItem("savedNoteName"));
+
+  for(var v = 0; v < loadNoteNames.length; v++)
+  {
+    var noteName = loadNoteNames[v];
+    var noteToLoad = JSON.parse(localStorage.getItem(noteName));
+    var noteNum = loadNoteNames[v].replace("savedNoteID", "");
+    var lastNoteName = loadNoteNames[loadNoteNames.length - 1];
+
+    var loadWrap = document.createElement("div");
+    document.getElementById("notesListContentDiv").appendChild(loadWrap);
+    loadWrap.outerHTML = noteToLoad[0];
+
+
+
+
+    var loadTxtCont = document.createElement("div");
+    loadTxtCont.setAttribute("class", "textCont");
+    loadTxtCont.setAttribute("id", "textContID" + noteNum);
+
+    var loadTextArea = document.createElement("textarea");
+    loadTextArea.setAttribute("class", "textEditor");
+    loadTextArea.setAttribute("id", "textEditorID" + noteNum);
+
+    loadTxtCont.appendChild(loadTextArea);
+    document.getElementById("containerContent").appendChild(loadTxtCont);
+
+    tinymce.init({selector: "textarea", branding: false,width: "100%", plugins: "print", menubar: false, toolbar: 'undo redo | styleselect | forecolor | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | link image | code | print',statusbar: false,height: "100%",init_instance_callback: loadContent});
+
+    if (noteName != lastNoteName)
+    {
+        document.getElementById("textContID" + noteNum).style.position ="absolute";
+        document.getElementById("textContID" + noteNum).style.left = "-999em";
+    }
+    else if ((noteName = lastNoteName))
+    {
+        document.getElementById("textContID" + noteNum).style.position = "";
+        document.getElementById("textContID" + noteNum).style.left = "";
+    }
+
+  }
+}
+
+
+function displayFavorite()
+{
+  var loadNoteNamesFav = JSON.parse(localStorage.getItem("savedNoteName"));
+  for(var s = 0; s < loadNoteNamesFav.length; s++)
+  {
+
+    var cycleNoteNames = loadNoteNamesFav[s];
+    var cycNoteNum = cycleNoteNames.replace("savedNoteID", "");
+    var cycNoteInfo = JSON.parse(localStorage.getItem(cycleNoteNames));
+
+    if(JSON.parse(cycNoteInfo[2]) === true)
+    {
+      var favLoadWrap = document.createElement("div");
+      document.getElementById("notesListContentDiv").appendChild(favLoadWrap);
+      favLoadWrap.outerHTML = cycNoteInfo[0];
+
+      var favLoadTxtCont = document.createElement("div");
+      favLoadTxtCont.setAttribute("class", "textCont");
+      favLoadTxtCont.setAttribute("id", "textContID" + cycNoteNum);
+
+      var favLoadTextArea = document.createElement("textarea");
+      favLoadTextArea.setAttribute("class", "textEditor");
+      favLoadTextArea.setAttribute("id", "textEditorID" + cycNoteNum);
+      favLoadTextArea.style.width = "100%";
+
+      favLoadTxtCont.appendChild(favLoadTextArea);
+      document.getElementById("containerContent").appendChild(favLoadTxtCont);
+
+
+
+      tinymce.init({selector: "textarea", menubar: false, branding: false, width: "100%", toolbar: false,statusbar: false, init_instance_callback: setFaveTxt })
+
+
+
+    }
+
+
+
+
+  }
+}
+
+
+
 
 function preview(note) {
   /* let this be */
@@ -119,8 +163,9 @@ function date_() {
   console.log(newdate);
   return newdate;
 }
-
+var myVar;
 function mainPage() {
+  tinymce.remove();
   list.innerHTML = "";
   content.innerHTML = "";
   title.innerText = "My notes";
@@ -144,7 +189,9 @@ function mainPage() {
   var buttonMain = document.createElement("div");
   buttonMain.setAttribute("class", "buttonMain");
   buttonMain.setAttribute("id", "buttonMainID");
+
   loadPage();
+  myVar = setInterval(saveNote, 100);
 }
 
 function landingPage() {
@@ -152,11 +199,16 @@ function landingPage() {
 }
 
 function favoritePage() {
+  clearInterval(myVar);
   tinymce.remove();
   list.innerHTML = "";
-  title.innerText = "My favorite";
-  addNotes();
-  preview(arr[0]);
+  content.innerHTML = "";
+  title.innerText = "My favorites";
+  let div_1 = document.createElement("div");
+  div_1.id = "notesListContentDiv";
+  list.appendChild(div_1);
+  displayFavorite();
+
 }
 
 function searchPage() {
@@ -182,8 +234,8 @@ function searchPage() {
   <div class="search">
   <div class="searchInput">
       <input type="text" placeholder="Search...">
-      
-      
+
+
       </div>
 </div>
 */
@@ -341,14 +393,9 @@ function createNote() {
   document.getElementById("notesListContentDiv").appendChild(buttonWrap);
   document.getElementById("containerContent").appendChild(textCont);
 
-  tinymce.init({
-    selector: "textarea",
-    branding: false,
-    plugins: "print",
-    width: "100%",
-    menubar: false,
-    toolbar: "print",
-  });
+
+  tinymce.init({selector: "textarea", branding: false,width: "100%", plugins: "print", menubar: false, toolbar: 'undo redo | styleselect | forecolor | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | link image | code | print',statusbar: false,height: "100%",});
+
 
   var savedNoteName = "savedNoteID" + getNoteID;
   var getCurrNotes = JSON.parse(localStorage.getItem("savedNoteName"));
@@ -398,7 +445,11 @@ function saveNote() {
       var newText = tinymce.get("textEditorID" + specID).getContent();
       textToUpdate[1] = newText;
       var textToUpdateStr = JSON.stringify(textToUpdate);
-      localStorage.setItem("savedNoteID" + specID, textToUpdateStr);
+      if(newText != "")
+      {
+        localStorage.setItem("savedNoteID" + specID, textToUpdateStr);
+      }
+
     }
   }
 }
@@ -434,18 +485,23 @@ function favoriteNote(favBtn) {
 
   if (favNoteBoo === false) {
     favNoteBoo = true;
+    favNoteBtnTwo.innerHTML = '<i class="fas fa-heart"></i>';
     var favNoteBooStr = JSON.stringify(favNoteBoo);
+    favNoteArr[0] = document.getElementById("buttonWrapID" + favNumID).outerHTML;
     favNoteArr[2] = favNoteBooStr;
     var favNoteArrStr = JSON.stringify(favNoteArr);
     localStorage.setItem(favNoteName, favNoteArrStr);
-    favNoteBtnTwo.innerHTML = '<i class="fas fa-heart"></i>';
+
+
   } else if (favNoteBoo === true) {
     favNoteBoo = false;
+    favNoteBtnTwo.innerHTML = '<i class="far fa-heart"></i>';
     var favNoteBooStrTwo = JSON.stringify(favNoteBoo);
+    favNoteArr[0] = document.getElementById("buttonWrapID" + favNumID).outerHTML;
     favNoteArr[2] = favNoteBooStrTwo;
     var favNoteArrStrTwo = JSON.stringify(favNoteArr);
     localStorage.setItem(favNoteName, favNoteArrStrTwo);
-    favNoteBtnTwo.innerHTML = '<i class="far fa-heart"></i>';
+
   }
 }
 
@@ -471,6 +527,7 @@ function saveNoteTitle(inputID) {
   titleToEdit.style.position = "";
   titleToEdit.style.left = "";
 }
+
 
 function editNote(editBtn) {
   var editBtnIDTwo = document.getElementById(editBtn).id;
@@ -511,7 +568,43 @@ function visible(notebtn) {
   }
 }
 
-document.getElementById("logo").addEventListener("click", mainPage);
+
+function loadContent()
+{
+  var loadNoteNamesTwo = JSON.parse(localStorage.getItem("savedNoteName"));
+
+  for(var z = 0; z < loadNoteNamesTwo.length; z++)
+  {
+    var noteNameTwo = loadNoteNamesTwo[z];
+    var noteToLoadTwo = JSON.parse(localStorage.getItem(noteNameTwo));
+    var noteNumTwo = loadNoteNamesTwo[z].replace("savedNoteID", "");
+    var noteContentLoad = JSON.parse(localStorage.getItem("savedNoteID" + noteNumTwo));
+    tinymce.get("textEditorID" + noteNumTwo).setContent(noteContentLoad[1]);
+
+  }
+}
+
+function setFaveTxt()
+{
+  var loadNoteNamesX = JSON.parse(localStorage.getItem("savedNoteName"));
+  for(var g = 0; g < loadNoteNamesX.length; g++)
+  {
+    var loadNumX = loadNoteNamesX[g].replace("savedNoteID", "");
+    var loadNoteX = JSON.parse(localStorage.getItem(loadNoteNamesX[g]));
+    if(JSON.parse(loadNoteX[2]) === true)
+    {
+      tinymce.get("textEditorID" + loadNumX).setContent(loadNoteX[1]);
+    }
+  }
+
+}
+
+
+
+
+
+
+document.getElementById("logo").setAttribute("onClick", "mainPage()");
 document.getElementById("main").addEventListener("click", mainPage);
 
 for (let el of document.getElementsByClassName("search")) {
@@ -530,5 +623,3 @@ for (let el of document.getElementsByClassName("settings")) {
 }
 
 document.getElementById("ham").addEventListener("click", hamburgerMenu);
-
-setInterval(saveNote, 100);
