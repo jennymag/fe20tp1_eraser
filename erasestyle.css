@@ -5,6 +5,10 @@
   box-sizing: inherit;
 }
 
+.tox-notification {
+  display: none !important;
+}
+
 html {
   box-sizing: border-box;
   font-size: 62.5%;
@@ -16,7 +20,7 @@ html {
 }
 
 body {
-  font-family: "Dosis", sans-serif;
+  font-family: "Rokkit", serif;
   font-size: 1.6rem;
   margin: 0;
   height: 100%;
@@ -276,9 +280,6 @@ nav.nav {
 .secondSection {
   margin: 200px;
 }
-.buttonCont {
-  display: inline-flex !important;
-}
 
 .makeNoteButton {
   border-width: 4px !important;
@@ -289,7 +290,7 @@ nav.nav {
 
 button.noteButton {
   border-width: 4px !important;
-  width: 300px !important;
+
   height: 120px !important;
   background-color: transparent !important;
   z-index: 1 !important;
@@ -305,9 +306,6 @@ div.noteButtonText {
   flex-direction: column !important;
 }
 
-.buttonWrap {
-  display: inline-flex !important;
-}
 .editorMain {
   width: 100% !important;
   overflow: hidden !important;
@@ -336,7 +334,8 @@ div.noteButtonText {
 
 .noteOptions {
   display: inline-grid !important;
-  grid-template-columns: auto auto !important;
+  grid-template-columns: auto !important;
+  grid-template-rows: auto auto auto !important;
   padding: 8px !important;
 }
 
@@ -348,6 +347,13 @@ button.viewFavButton {
   width: 50px !important;
   height: 48px !important;
   margin: 0px !important;
+}
+
+button {
+  background: transparent;
+  border: none;
+  color: white;
+  outline: none;
 }
 
 .startBtns {
@@ -374,7 +380,6 @@ button.viewFavButton {
 
 #containerContentDiv {
   margin-top: 100px;
-  background-color: white;
   min-width: 75%;
   font-family: "Roboto", sans-serif;
   margin-bottom: 60px;
@@ -383,9 +388,11 @@ button.viewFavButton {
 #containerContent {
   display: flex;
   justify-content: center;
+  background-color: rgba(131, 131, 131, 0.2);
+  min-width: 20%;
 }
 
-#h1 {
+#title {
   font-family: "Roboto", sans-serif;
   padding: 20px;
   text-align: center;
@@ -415,18 +422,19 @@ button.viewFavButton {
   outline: none;
 }
 
-#notesList {
+aside {
   border-top: 1px solid grey;
   border-bottom: 1px solid grey;
-  box-shadow: 0px 0px 10px grey;
+  box-shadow: 0px 10px 10px grey;
   background-color: rgb(142, 136, 213);
   overflow-x: hidden;
   overflow-y: auto;
+  min-width: 4.2%;
 }
 
 .gridContainer {
   display: grid;
-  grid-template-columns: 5% 22% 75%;
+  grid-template-columns: 5% 21% 74%;
   height: 100vh;
 }
 .mainMenu {
@@ -440,32 +448,14 @@ button.viewFavButton {
 .mainMenu:hover {
   background-color: rgb(7, 7, 45);
 }
-.favorite {
-  display: flex;
-  justify-content: center;
-  box-shadow: 0px 24px 3px -24px grey;
-  margin-bottom: 50px;
-  font-size: 20px;
-}
-.note {
-  /*  padding-top: 10px;
-  padding-left: 20px;
-  margin-top: 40px; */
-  min-width: 100%;
-  border: 1px solid lightgray;
-  text-align: left;
-  min-height: 120px;
-  padding: 20px;
-  background-color: rgb(183, 178, 238);
-  color: white;
-}
 
 .note:hover {
   box-shadow: 0px 0px 20px gray;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .note:focus {
-  background-color: rgb(95, 94, 96);
+  background-color: rgba(255, 255, 255, 0.5);
   border: 1px solid lightgray;
   box-shadow: 0px 0px 20px grey;
   text-decoration: none;
@@ -489,12 +479,24 @@ button.viewFavButton {
   background-color: rgb(7, 7, 45);
 }
 
-#logo {
-  font-size: 39px;
+#hamburgerDiv {
+  display: grid;
+  min-width: 300px;
+  border: 1px solid lightgray;
+  box-shadow: 0px 0px 10px grey;
 }
 
 .qInfo {
   margin-top: 170px;
+}
+
+.inputField {
+  width: 100%;
+  height: 30px;
+}
+
+.inputInnerDiv {
+  padding: 200px;
 }
 
 #addNote {
@@ -513,7 +515,6 @@ button.viewFavButton {
 }
 .qNav {
   text-align: center;
-  border: 1px solid #f4f5f2;
   background-color: rgb(88, 91, 137);
 }
 .qUl {
@@ -525,82 +526,144 @@ button.viewFavButton {
   font-family: "Rokkitt", serif;
 }
 
+#logo {
+  margin-top: 20px;
+}
+
+#makeNoteButton {
+  padding: 10%;
+  font-size: 50px;
+  color: white;
+  cursor: pointer;
+}
+
+#makeNoteButton :hover {
+  cursor: pointer;
+}
+
 .qLi {
   text-decoration: none;
   color: white;
-  font-size: 30px;
+  font-size: 1.5vw;
   padding: 20px;
 }
 
 .qLi:hover {
-  background-color: rgb(7, 7, 45);
+  background-color: rgba(255, 255, 255, 0.2);
 }
-/* favorite page ends here */
 
-/* date */
 .thirdSection {
   margin-top: 600px;
   margin-bottom: 300px;
   margin-left: 20px;
 }
 
-/* SORT & BROWSE
-body {
-  margin: 20px;
+@media (min-width: 978px) {
+  #hamburgerDiv {
+    display: none;
+  }
 }
-#inputArea {
+
+@media (max-width: 977px) {
+  #hamburgerDiv {
+    padding: 5px 0px 0px 10px;
+  }
+  .qNav {
+    display: none;
+  }
+  #ham {
+    font-size: 30px;
+  }
+  #qNavMob {
+    display: none;
+  }
+  .gridContainer {
+    display: grid;
+    grid-template-columns: 35% 65%;
+    height: 100vh;
+  }
+  #h1 {
+    font-size: 3.2vw;
+  }
+}
+
+.textarea {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.button {
+  height: 20px;
+}
+
+.noteButton {
+  height: 70px;
+  width: 100%;
+  background-color: transparent;
+  z-index: 1;
+  position: absolute;
+  display: inline-block;
+  margin-left: -20px;
+}
+
+.titleInp {
+  height: 70%;
+  width: 100%;
+  z-index: 2;
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  margin-left: -20px;
+}
+
+.noteOptions {
   display: inline-grid;
-  min-width: 300px;
-}
-.notes {
-  border: 1px solid black;
-  max-width: 600px;
-}
-#inputText,
-#saveInputBtn {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-#list {
-  max-width: 100px;
-}
-.listContainer {
-  width: 300px;
-  border: 1px solid black;
-  height: 600px;
-  margin: 4px, 4px;
-  padding: 4px;
-
-  overflow-x: hidden;
-  overflow-y: auto;
-  text-align: justify;
+  grid-template-columns: 28px;
+  grid-template-rows: 28px 28px 28px;
 }
 
-------print page -----
-#toolBar {
-    padding: 20px;
-    border: 2px solid black;
-    
-
-}
-#notePrints {
-    padding: 20px;
-    border: 1px solid black;
-    height: 100%;
-    color: red;
-
-}
-#D1 {
-    display: flex;
-    grid-template-columns: 1fr 3fr;
+.buttonWrap {
+  width: 100%;
+  display: inline-flex;
 }
 
-#btn {
-    border-radius: 5rem;
-    background-color: black;
-    color: white;
-    
-    
-
+.noteTitle {
+  font-family: "Roboto", sans-serif;
 }
-*/
+
+.buttonCont {
+  font-family: ;
+  display: inline-flex;
+  white-space: nowrap;
+  position: relative;
+  width: 100%;
+  padding: 1%;
+  font-family: "Rokkit", serif;
+  border: 1px solid lightgray;
+  text-align: left;
+  min-height: 120px;
+  padding: 20px;
+  background-color: rgb(183, 178, 238);
+  color: white;
+  margin-left: 4%;
+  margin-bottom: 4%;
+}
+
+button.saveOptionBtn,
+button.deleteOptionBtn,
+button.favOptionBtn,
+button.editOptionBtn,
+button.viewFavButton {
+  width: 28px !important;
+  height: 28px !important;
+  margin: 0px !important;
+}
+
+#notesList {
+  width: 100%;
+}
+
+#notesListContentDiv {
+  width: 100%;
+}

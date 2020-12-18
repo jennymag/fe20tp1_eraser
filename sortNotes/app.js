@@ -19,6 +19,8 @@ function toggleStar(event) {
   render();
 }
 
+myNotes.sort();
+
 function createNote({ title, text, is_favorite }) {
   const el = document.createElement("div");
   el.className = "note";
